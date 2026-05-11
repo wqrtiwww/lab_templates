@@ -1,0 +1,30 @@
+name: CMake Build & Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y build-essential cmake
+
+      - name: Clean any old build artifacts
+        run: rm -rf build
+
+      - name: Configure CMake
+        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug --fresh
+
+      - name: Build
+        run: cmake --build build --config Debug -j$(nproc)
+
+      - name: Run tests
+        run: ./run_tests.sh
