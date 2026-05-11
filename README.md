@@ -4,8 +4,8 @@
 
 | Field     | Value               |
 |-----------|---------------------|
-| **Name**  | _John Doe_          |
-| **Group** | _CS-101_            |
+| **Name**  | Amina Ashurlaeva         |
+| **Group** |  RPOIPII 1          |
 
 > **Replace the data above with your own!**
 
@@ -105,3 +105,4 @@ README.md                  # This file
 **Deadline:** _TBD_
 
 The grade is based on the build and test results at the time of the deadline.
+
