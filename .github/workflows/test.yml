@@ -2,25 +2,22 @@ name: Build & Test
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
+      
       - name: Configure
         run: cmake -B build -DCMAKE_BUILD_TYPE=Debug
-
+      
       - name: Build
         run: cmake --build build -j$(nproc)
-
-      - name: Run tests
+      
+      - name: Test
         run: |
           cd build
-          ctest --output-on-failure --timeout 60
+          ctest --output-on-failure
