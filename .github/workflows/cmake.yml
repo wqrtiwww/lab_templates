@@ -21,7 +21,9 @@ jobs:
         run: rm -rf build
 
       - name: Configure CMake
-        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug --fresh
+        run: |
+  rm -rf build
+  cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug 
 
       - name: Build
         run: cmake --build build --config Debug -j$(nproc)
